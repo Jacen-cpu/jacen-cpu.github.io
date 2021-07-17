@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="code">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Jacen">
+    
+    <title>
+        
+            网络互联模型 |
+        
+        Keep )w(
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"jacen-cpu.github.io","root":"/","language":"zh-CH"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jacen's learing journey" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Keep )w(
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">网络互联模型</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jacen</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-02-07 18:45:12
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/CCNA/">CCNA</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">网络基础</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <meta name="referrer" content="no-referrer"/> 
+
+<h1 id="网络互联模型OSI"><a href="#网络互联模型OSI" class="headerlink" title="网络互联模型OSI"></a>网络互联模型OSI</h1><blockquote>
+<p>OSI (Open Systems Interconnection)开放系统互联</p>
+</blockquote>
+<h2 id="分层方式"><a href="#分层方式" class="headerlink" title="分层方式"></a>分层方式</h2><p>OSI是<strong>层次型</strong>的。</p>
+<p><strong>优点</strong> ：</p>
+<ul>
+<li>划分小，易开发</li>
+<li>标准化，易协作</li>
+<li>定规范，标准化</li>
+<li>通不同， 不干涉</li>
+</ul>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p><img src="https://img-blog.csdnimg.cn/20190327110736620.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N0ZXJubHljb3Jl,size_16,color_FFFFFF,t_70"></p>
+<p>OSI包含7层，<em>上3层</em>指定终端中的应用程序如何彼此交流，以及和用户交流，<em>下4层</em>指定如何进行端与端的数据传输。</p>
+<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><blockquote>
+<p>应用层是实际应用程序之间的接口</p>
+</blockquote>
+<p>这里是用户与计算机交流的场所，并且它还负责确定目标通信方的可行性，判断是否有足够的资源进行通信。</p>
+<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><p>它向应用层提供数据，并负责数据转化和代码格式化。</p>
+<h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h3><blockquote>
+<p>将不同应用程序的数据分离</p>
+</blockquote>
+<p>它负责在表示层实体之间建立，管理和终止对话，还对设备与节点之间的对话进行控制。</p>
+<p>3种模式：<em>单工，单双工，全双工</em></p>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>这里<strong>将数据进行分段，并重组为数据流</strong>。这里提供如下机制：<em>对上层应用程序进行多路复用，建立会话，拆除虚拟电路，提供透明的数据传输。</em></p>
+<h4 id="面向连接的通信"><a href="#面向连接的通信" class="headerlink" title="面向连接的通信"></a>面向连接的通信</h4><p><img src="https://upload-images.jianshu.io/upload_images/4698491-8f2ded5fc9495bbd.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/655/format/webp"></p>
+<p>传输设备与其对等的系统建立面向对话的连接，这称为对话建立或<strong>三次握手</strong> 。</p>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>它负责管理设备编址，跟踪设备在网络中的位置并确定最佳的传输路径。路由器在互联网中提供路由选择服务。网络层必须在位于不同网络中的设备之间传输数据。</p>
+<h4 id="路由器（第三层设备）"><a href="#路由器（第三层设备）" class="headerlink" title="路由器（第三层设备）"></a>路由器（第三层设备）</h4><p>其接口收到分组后，路由器先检查分组的目标IP地址。如果分组的目的地不是当前路由器，路由器将在路由表中查找目标地址。如果找不到直接将分组丢弃。</p>
+<p>在网络层使用的分组有两种：<em><strong>数据分组，路由更新分组</strong></em> 。</p>
+<blockquote>
+<p><strong>数据分组</strong> 用于在互联网中传输用户数据</p>
+<p><strong>路由更新</strong> 分组包含与有关互联网络中所有连接网络的更新信息，用于将这些数据告知邻接路由器。</p>
+</blockquote>
+<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>这里提供数据的物理传输，并处理错误通知，网络拓扑和流量控制。它包含了两个子层：<em>介质访问控制子层，逻辑链路控制子层</em> 。</p>
+<p><strong>这里将报文封装成帧</strong> 。</p>
+<h4 id="交换机和网桥（第二层设备）"><a href="#交换机和网桥（第二层设备）" class="headerlink" title="交换机和网桥（第二层设备）"></a>交换机和网桥（第二层设备）</h4><blockquote>
+<p>ASIC (Application-specific Integrated Circuit) 专用集成电路</p>
+</blockquote>
+<p>第二层交换机使用ASIC的特殊硬件，其延迟非常低。第二层设备将源硬件地址加到过滤表中，以跟踪帧是从哪个端口来的。建立过滤表后，就是把帧转发到特定的网段中，但是如果交换机找不到其目标硬件地址，交换机就会把帧转发给所有网段。然而如果帧的目标地址是广播地址，交换机就默认把所有广播转发给与之相连的所有网段。这会产生广播风暴。</p>
+<blockquote>
+<p> <strong>广播风暴</strong>（broadcast storm）是指当广播数据充斥网络无法处理，并占用大量网络带宽，导致正常业务不能运行，甚至彻底瘫痪，这就发生了“广播风暴”。</p>
+</blockquote>
+<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>物理层有两项功能：发送和接收比特（bit)。</p>
+<h4 id="集线器（第一层设备）"><a href="#集线器（第一层设备）" class="headerlink" title="集线器（第一层设备）"></a>集线器（第一层设备）</h4><p>集线器实际上是一种多端口转发器，它接收数字信号，进行放大或重建，然后通过所有活动端口传送出去。而不去查看信号表示的数据。使用集线器组建的网络是星型物理网络，这增大了单个LEN网段的覆盖区域，但是不推荐。</p>
+<blockquote>
+<p><strong>按封装顺序排列：数据段，分组，帧，比特。</strong></p>
+</blockquote>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Linux到底是什么</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/02/05/%E5%8F%98%E9%87%8F%E5%90%8D%E7%9A%84%E8%89%BA%E6%9C%AF/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">变量名的艺术</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Jacen</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

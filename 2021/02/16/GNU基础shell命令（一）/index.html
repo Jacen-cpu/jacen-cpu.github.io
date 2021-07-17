@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="code">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Jacen">
+    
+    <title>
+        
+            GNU基础shell命令（一） |
+        
+        Keep )w(
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"jacen-cpu.github.io","root":"/","language":"zh-CH"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jacen's learing journey" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Keep )w(
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">GNU基础shell命令（一）</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jacen</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-02-16 21:45:32
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>在这里展示是Linux shell命令最基础的部分(<strong>Bash Shell</strong>)，却也是最重要的部分。<strong>（干货满满）</strong></p>
+<h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p><strong>cd-切换用户当前工作目录</strong></p>
+<p><code>cd [-L|[-P [-e]]] [dir]</code> <strong>空格非常重要</strong> </p>
+<blockquote>
+<p>选项：</p>
+<p>-L （默认值）如果要切换到的目标目录是一个符号连接，那么切换到符号连接的目录。</p>
+<p>-P 如果要切换到的目标目录是一个符号连接，那么切换到它指向的物理位置目录。 </p>
+<p>-当前工作目录将被切换到环境变量OLDPWD所表示的目录，也就是前一个工作目录。 </p>
+</blockquote>
+<p>cd    # 进入用户主目录； </p>
+<p>cd /  # 进入根目录 </p>
+<p>cd ~  # 进入用户主目录； </p>
+<p>cd ..  # 返回上级目录（若当前目录为“/“，则执行完后还在“/“；”..”为上级目录的意思）； </p>
+<p>cd ../..  # 返回上两级目录； </p>
+<p><em>cd !$  # 把上个命令的参数作为cd参数使用。</em> </p>
+<p><strong>pwd-输入当前的目录</strong> </p>
+<p><strong>绝对路径和相对路径</strong></p>
+<p>我们知道所谓路径就是用来定位目标的位置的。所以我们生活中的地址就是个活生生的例子比如我是杭电的一个学生用绝对路径怎么表示呢？</p>
+<p><strong>/银河系/太阳系/地球/亚洲/中国/浙江/杭州/江干区/下沙/杭电</strong>（是不是很蠢）蠢就对了在Linux绝对路径就是这样用的:</p>
+
+
+<p>同样用相对路径是什么说法呢？</p>
+<p>假如我的一个同学在江苏，那么我会告诉他我的地址是 <strong>/浙江/杭州/江干区/下沙/杭电</strong> 很合理（不是吗）同样我们在Linux中这样用:</p>
+
+
+<h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p><strong>ls命令</strong> 用来显示目标列表，在Linux中是使用率较高的命令</p>
+<p>ls       # 仅列出当前目录可见文件</p>
+<p>ls -l    # 列出当前目录可见文件详细信息 </p>
+<p>ls -a   #列出当前目录的所有文件包括隐藏文件 <em>（隐藏文件名前带点.）</em></p>
+<p>ls -hl   # 列出详细信息并以可读大小显示文件大小 </p>
+<p>ls -al   # 列出所有文件（包括隐藏）的详细信息 <em><strong>（缩写为ll）</strong></em></p>
+<p>du -sh * | sort -h # 按文件大小排序(同上)</p>
+<p>ls -F    #每个目录名加 “/“ 后缀，每个 FIFO 名加 “|” 后缀， 每个可运行名加“ * ”后缀。</p>
+<p>ls -R    #递归列出遇到的子目录</p>
+<p><em>ls -FR</em> </p>
+
+
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p><strong>文件扩展匹配符</strong> <code>?</code> <code>*</code></p>
+<p><code>?</code>一个占位符</p>
+<p><code>*</code>多个占位符</p>
+<p><strong>元字符通配符 []</strong> </p>
+<h2 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h2><p>*<em>touch的作用是</em>创建新文件<em>或是</em>更新时间* ** </p>
+<p>-a：或–time=atime或–time=access或–time=use  只更改存取时间；</p>
+<p>-c：或–no-create  不建立任何文件；</p>
+<p>-d：&lt;时间日期&gt; 使用指定的日期时间，而非现在的时间；</p>
+<p> -f：此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题；</p>
+<p>-m：或–time=mtime或–time=modify  只更该变动时间；</p>
+<p>-r：&lt;参考文件或目录&gt;  把指定文件或目录的日期时间，统统设成和参考文件或目录的日期时间相同；</p>
+<p>-t：&lt;日期时间&gt;  使用指定的日期时间，而非现在的时间；</p>
+<p>–help：在线帮助； –version：显示版本信息。 </p>
+<h2 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h2><p><strong>cp-将源文件或目录复制到目标文件或目录中</strong> </p>
+<p>-a：此参数的效果和同时指定”-dpR”参数相同； </p>
+<p>-d：当复制符号连接时，把目标文件或目录也建立为符号连接，并指向与源文件或目录连接的原始文件或目录； </p>
+<p>-f：强行复制文件或目录，不论目标文件或目录是否已存在； </p>
+<p>-i：覆盖既有文件之前先询问用户； </p>
+<p>-l：对源文件建立硬连接，而非复制文件； </p>
+<p>-p：保留源文件或目录的属性； </p>
+<p>-R/r：递归处理，将指定目录下的所有文件与子目录一并处理； </p>
+<p>-s：对源文件建立符号连接，而非复制文件； </p>
+<p>-u：使用这项参数后只会在源文件的更改时间较目标文件更新时或是名称相互对应的目标文件并不存在时，才复制文件； </p>
+<p>-S：在备份文件时，用指定的后缀“SUFFIX”代替文件的默认后缀； </p>
+<p>-b：覆盖已存在的文件目标前将目标文件备份； </p>
+<p>-v：详细显示命令执行的操作。 </p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/02/19/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">GNU基础shell命令（二）</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/02/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%8F%91%E5%B1%95/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">计算机网络的发展</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Jacen</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

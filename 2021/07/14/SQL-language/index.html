@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="code">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Jacen">
+    
+    <title>
+        
+            SQL_language |
+        
+        Keep )w(
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"jacen-cpu.github.io","root":"/","language":"zh-CH"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Jacen's learing journey" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Keep )w(
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                LINKS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">SQL_language</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jacen</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-07-14 10:10:52
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/SQL/">SQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="数据库的分类"><a href="#数据库的分类" class="headerlink" title="数据库的分类"></a>数据库的分类</h1><h2 id="关系型"><a href="#关系型" class="headerlink" title="关系型"></a>关系型</h2><p>它可以砍成一个二位矩阵，通过行和列可以确定每一个数据，类似Excel。</p>
+<p>基于关系数据库的数据库软件有很多，目前主流的数据库主要有以下几类：</p>
+<blockquote>
+<ol>
+<li>商用数据库：Oracle，SQL Server，DB2等。</li>
+<li>开源数据库：MySQL，PostgreSQL等。</li>
+<li>桌面数据库：Microsoft Access等。</li>
+<li>嵌入式数据库 ：Sqlite等。</li>
+</ol>
+</blockquote>
+<h2 id="非关系型-NOSQL"><a href="#非关系型-NOSQL" class="headerlink" title="非关系型(NOSQL)"></a>非关系型(NOSQL)</h2><p>​        在非关系数据库中，数据的定义没有关系数据库中的限制，数据的定义可以非常灵活，在如今这个数据爆炸的时代，NoSQL非常适用于那些数据关系不复杂，并且对数据的规模和扩展性有需求的场景。</p>
+<blockquote>
+<p>Mongodb, DynamoDB</p>
+</blockquote>
+<h1 id="SQL-Structured-Query-Language"><a href="#SQL-Structured-Query-Language" class="headerlink" title="SQL(Structured Query Language)"></a>SQL(Structured Query Language)</h1><p>SQL语言定义以下几种操作数据库的功能：</p>
+<blockquote>
+<ul>
+<li>DDL(Data Definition Language)：允许用户定义数据（创建表、删除表、修改表）。</li>
+<li>DML(Data Manipulation Language)：添加、删除、更新数据。</li>
+<li>DQL(Data Query Language)：查询数据，也是最频繁的数据库日常操作。</li>
+</ul>
+</blockquote>
+<h1 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h1><p>关系数据库是建立在关系模型上的，而关系模型本质上就是由多个存储数据的二维表组成的。表的每一行叫做记录（ Record），记录是一个逻辑意义上的数据。表的每一列称为字段（Column），同一张表中每一列的数据类型都是一致的。字段包含的数据类型包括整形、浮点型、字符串、日期等等，以及是否允许为空（Null）。</p>
+<p>关系数据库的表和表之间的逻辑关系有三种：“一对多”、“多对一”和“一对一”。</p>
+<h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><p>关系表中有个很重要的约束，就是任意两条记录不能重复。这里的不能重复指的是每条记录需要一个能和其他记录区别开来的特定字段，这个字段称为<strong>主键</strong>。</p>
+<p>常见的可作为id字段的类型有：</p>
+<blockquote>
+<ol>
+<li>自增整数类型：数据库会在插入数据后自动为每条记录分配一个自增整数，这样我们就不用担心主键重复，也不用自己预先生成主键。</li>
+<li>全局唯一GUID类型：这是一种全局唯一的字符串，类似8f55d96b-8acc-4636-8cb8-76bf8abc2f57。GUID算法通过网卡MAC地址、时间戳和随机数生成在任意时间都不同的字符串，大部分编程语言内置了GUID算法，可以自动生成主键。</li>
+</ol>
+</blockquote>
+<h3 id="联合主键"><a href="#联合主键" class="headerlink" title="联合主键"></a>联合主键</h3><p>关系数据库也允许表通过多个字段来定位记录，既使用两个或多个字段作为主键，这种主键叫做联合主键。对于联合主键，允许一列有重复，但是所有主键的组合必须是唯一的</p>
+<h2 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h2><p>通过另一个表的主键联合两张表的字段就称之为外键。要注意的是，外键必须是另一个表格的主键。</p>
+<h1 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h1><h2 id="表格（创建，修改，删除）"><a href="#表格（创建，修改，删除）" class="headerlink" title="表格（创建，修改，删除）"></a>表格（创建，修改，删除）</h2><h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p><code>CREATE TABLE</code>是创建表格的语句。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name (</span><br><span class="line">    column1 datatype1,</span><br><span class="line">    column2 datatype2,</span><br><span class="line">    column3 datatype3,</span><br><span class="line">   ....</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Students (</span><br><span class="line">    StudentID <span class="type">int</span>, </span><br><span class="line">    Name <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">    City <span class="type">varchar</span>(<span class="number">255</span>),</span><br><span class="line">    <span class="keyword">PRIMARY</span> KEY(StudentID)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>特定数据库支持的数据类型不同，以下是常用的<code>SQL</code>数据类型：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VARCHAR(n) 或 CHARACTER VARYING(n)</td>
+<td>可变长度的字符/字符串，最大长度为n</td>
+</tr>
+<tr>
+<td>BINARY(n)</td>
+<td>固定长度为n的二进制串</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td>存储TRUE或FALSE值</td>
+</tr>
+<tr>
+<td>INTEGER(p)</td>
+<td>整数值（没有小数点），精度为p</td>
+</tr>
+<tr>
+<td>INTEGER</td>
+<td>整数值（没有小数点），精度为10</td>
+</tr>
+<tr>
+<td>DECIMAL(p, s)</td>
+<td>精确数值，精度为p，小数点后位数为s。例如：DICIMAL(5,2)小数点前有3位数，小数点后有2位数</td>
+</tr>
+<tr>
+<td>FLOAT(p)</td>
+<td>近似数值，尾数精度为p</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>近似数值，尾数精度为16</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>存储年、月、日的值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>存储年、月、日、小时、分、秒的值</td>
+</tr>
+</tbody></table>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><p>如果我们想添加、删除、或者修改表中的特定字段，可以使用ALTER TABLE语句。添加字段语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name </span><br><span class="line"><span class="keyword">ADD</span> column_name datatype;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要删除字段，使用<code>ALTER TABLE table_name DROP COLUMN column_name;</code>语句即可，以下语句就将<code>Students</code>中的<code>Age</code>字段删除了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Students </span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">COLUMN</span> Age;</span><br></pre></td></tr></table></figure>
+
+<p>修改字段设定的语句是：<code>ALTER TABLE table_name MODIFY COLUMN column_name data_type</code>; 以下语句将<code>Students</code>中<code>Name</code>的数据类型改为<code>varchar(200)</code>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Students </span><br><span class="line">MODIFY <span class="keyword">COLUMN</span> Name <span class="type">varchar</span>(<span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p>如果要删除表格，使用<code>DROP TABLE</code>语句即可：<code>DROP TABLE table_name</code>；</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Students;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="操作记录（增加，删除，修改，替换）"><a href="#操作记录（增加，删除，修改，替换）" class="headerlink" title="操作记录（增加，删除，修改，替换）"></a>操作记录（增加，删除，修改，替换）</h2><p>关系数据库的基本操作是增删差改，既<code>CRUD：Create, Retrieve, Update, Delete</code>。</p>
+<h3 id="插入记录"><a href="#插入记录" class="headerlink" title="插入记录"></a>插入记录</h3><p><code>INSERT INTO</code> 语句用于在表中插入新记录，插入的方法有两张，第一种语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name(column1, column2, column3, ...) <span class="keyword">VALUES</span> (value1, value2, value3, ...);</span><br></pre></td></tr></table></figure>
+
+<p>第二种方法不需要指定<code>column</code>，只需要插入数据，但是要保证数据的顺序和数量和字段是对应的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_name <span class="keyword">VALUES</span> (value1, value2, value3, ...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><p><code>UPDATE</code> 语句可以用来修改表中的记录，语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line"><span class="keyword">SET</span> column1 <span class="operator">=</span> value1, column2 <span class="operator">=</span> value2, ...</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中WHERE限定了你要更新的记录，关于<code>condtion</code>的内容会在之后学习查询时详细探讨，现在简单理解就好。如果不使用WHERE子句，那么所有的记录都会被更新。以下语句将<code>StudentID</code>为1的学生改名为‘Daniel’：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE Students</span><br><span class="line"><span class="keyword">SET</span> Name <span class="operator">=</span> <span class="string">&#x27;Daniel&#x27;</span> </span><br><span class="line"><span class="keyword">WHERE</span> StudentID <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><p>如果要删除已有的记录，我们可以使用<code>DELETE</code>语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><p>替换的意思就是：如果我们希望插入一条新纪录，但是如果此记录已经存在，就先删除原记录，再插入新纪录。此时，我们就能使用<code>REPLACE</code>语句，这样就不需要通过查询，再决定是否先删除再插入了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">REPLACE <span class="keyword">INTO</span> Students(StudentID, name, city) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;Enoch&#x27;</span>, <span class="string">&#x27;New York City&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>此语句的作用就是查询id为1的学生记录是否存在，如果不存在，就创建一个新的记录，否则，已有记录会被删除，然后新纪录再被插入。</p>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p><code>SQL</code>约束用于规定表中的数据规则。如果存在违反约束的数据行为，行为会被约束终止。约束可以在创建表时规定（通过<code>CREATE TABLE</code>语句），或者在创建表之后规定（通过<code>ALTER TABLE</code>语句）。</p>
+<h3 id="创建约束-CREATE-TABLE"><a href="#创建约束-CREATE-TABLE" class="headerlink" title="创建约束 CREATE TABLE"></a>创建约束 CREATE TABLE</h3><p>创建表时规定约束的语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> table_name (</span><br><span class="line">    column1 data_type1(size) constraint1,</span><br><span class="line">    column2 data_type2(size) constraint2,</span><br><span class="line">    column3 data_type3(size) constraint3,</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>column</code> 为字段名字，<code>data_type </code>为数据类型，<code>constraint</code> 为约束类型，在<code>SQL</code>中，我们有以下约束：</p>
+<blockquote>
+<ul>
+<li>NOT NULL: 字段不能存储空值。</li>
+<li>UNIQUE: 保证字段的每行都是唯一的值。</li>
+<li>PRIMARY KEY: 主键，NOT NULL和UNIQUE的结合，确保某列（或多列）有唯一标识，用于找到特定记录。</li>
+<li>FOREIGN KEY：保证表中的数据匹配到（指向）另一个表中的主键。</li>
+<li>CHECK: 保证字段的值符合指定条件。</li>
+<li>DEFAULT: 规定没赋值时的默认值。</li>
+</ul>
+</blockquote>
+<h3 id="创建约束-ALTER-TABLE"><a href="#创建约束-ALTER-TABLE" class="headerlink" title="创建约束 ALTER TABLE"></a>创建约束 ALTER TABLE</h3><p>另一种添加约束的方法便是使用<code>ALTER TABLE</code>语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Students </span><br><span class="line">MODIFY Age <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>此语句设定了一个新的约束：<code>Students</code>的<code>Age</code>字段不能为空。</p>
+<p>以下语句添加了一个外键约束：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Students</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> fk_class_id</span><br><span class="line"><span class="keyword">FOREIGN</span> KEY (classID)</span><br><span class="line"><span class="keyword">REFERENCES</span> Classes(id);</span><br></pre></td></tr></table></figure>
+
+<p>如果要删除<code>Students</code>中<code>classID</code>的外键约束，我们可以使用以下的语句:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Students</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">FOREIGN</span> KEY fk_class_id;</span><br></pre></td></tr></table></figure>
+
+<h1 id="基本查询语法"><a href="#基本查询语法" class="headerlink" title="基本查询语法"></a>基本查询语法</h1><h2 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h2><p>如果想要查询表的数据，我们可以使用<code>SELECT</code>语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><p>使用<code>SELECT * FROM table_name</code>可以查到一张表的所有记录，但有时我们只需要获取符合特定条件的记录，那么我们就可以添加<code>WHERE</code>语句，来限定查询记录的条件：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table_name <span class="keyword">WHERE</span> <span class="keyword">condition</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><p>条件表达式（condition）有很多种，如果我们需要满足多个条件，可以使用 <code>AND</code> 连接多个条件。如果我们希望同时满足两个条件，那么我们需要在WHERE后面加上<code>condtion1 AND condition2</code>。还有一种条件是 <code>NOT condition</code>，代表不符合某种条件，比如我们要选取 <code>Gender</code> 为 ‘M’ 的学生，另一种写法就是 <code>Gender</code> 不为 ‘F’ 即可。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students <span class="keyword">WHERE</span> <span class="keyword">NOT</span> Gender <span class="operator">=</span> <span class="string">&#x27;F&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上面 <code>NOT Gender = ‘F’</code> 等价于 <code>Gender &lt;&gt; ‘F’</code>，所以两种写法都可以。如果要组合三个或更多的条件，那么就需要用圆括号<code>()</code>限制条件的判断顺序。比如我们需要查找<code>Age</code>在20以下或22以上，并且是男生的学生，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students <span class="keyword">WHERE</span> (Age <span class="operator">&lt;</span> <span class="number">20</span> <span class="keyword">OR</span> Age <span class="operator">&gt;</span> <span class="number">22</span>) <span class="keyword">AND</span> Gender <span class="operator">=</span> <span class="string">&#x27;M&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果不加括号，条件运算则会按照 NOT, AND, OR 的优先级顺序执行，既NOT优先级最高，最低的是OR。以下是常见条件表达式的总结：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>说明</th>
+<th>Example1</th>
+<th>Example2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>判断相等</td>
+<td>age = 20</td>
+<td>name = ‘xyz’</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>判断大于</td>
+<td>age &gt; 20</td>
+<td>name &gt; ‘xyz’</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>判断大于等于</td>
+<td>age &gt;= 20</td>
+<td>name &gt;= ‘xyz’</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>判断小于</td>
+<td>age &lt; 20</td>
+<td>name &lt; ‘xyz’</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>判断小于等于</td>
+<td>age &lt;= 20</td>
+<td>name &lt;= ‘xyz’</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>判断不等于</td>
+<td>age &lt;&gt; 20</td>
+<td>name &lt;&gt; ‘xyz’</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>判断相似</td>
+<td></td>
+<td>name LIKE ‘xy%’（%表示任意字符，xy%表示以xy为开头的字符）</td>
+</tr>
+</tbody></table>
+<h2 id="投影查询"><a href="#投影查询" class="headerlink" title="投影查询"></a>投影查询</h2><p>使用<code>SELECT * FROM table_name WHERE condition</code>可以选出表中的若干条记录，所返回的记录字段和原表是相同的，即结果的所有字段与原表的所有字段都一一对应。如果我们只希望返回某些特定字段的数据，而不是所有字段的数据，我们可以用 <code>SELECT column1, column2, … FROM table_name;</code> 让结果集仅包含指定字段。这种操作称为投影查询。</p>
+<p>如果我们只想要不同的数据，可以使用<code>SELECT DISTINCT</code>，语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> column1, column2, ... <span class="keyword">FROM</span> table_name;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们只想知道学生来自哪些不同的城市，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> City <span class="keyword">FROM</span> Students;</span><br></pre></td></tr></table></figure>
+
+<h2 id="排序ORDER-BY"><a href="#排序ORDER-BY" class="headerlink" title="排序ORDER BY"></a>排序ORDER BY</h2><p>当我们使用SELECT查询的时候，查询的结果往往是根据主键排序的，在我们的例子中就是按照<code>StudentID</code>排序的。如果我们想要根据我们自定义的字段排序的话，我们可以在最后加上<code>ORDER BY</code>，以下是<code>ORDER BY</code>的语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1, col2, ... </span><br><span class="line"><span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> col1, col2, ... <span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<p>例如，我们希望学生按照年龄从小到大排好序，那么就可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students <span class="keyword">ORDER</span> <span class="keyword">BY</span> Age;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们不在<code>ORDE BY</code>最后加上 <code>ASC</code> 或 <code>DESC</code>，那么就是默认从小到大排好序的。其中 <code>ASC</code> 表示从小到大的顺序，<code>DESC</code>表示倒序，以下语句获得的学生则会根据年龄从大到小排好序：w</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students <span class="keyword">ORDER</span> <span class="keyword">BY</span> Age <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们希望结果按照年纪从小到大排好序后，再根据性别排序的话，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students <span class="keyword">ORDER</span> <span class="keyword">BY</span> Age <span class="keyword">ASC</span>, Gender;</span><br></pre></td></tr></table></figure>
+
+<p>如果有WHERE子句，那么ORDER BY需要放在WHERE后面，如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students </span><br><span class="line"><span class="keyword">WHERE</span> City <span class="operator">=</span> <span class="string">&#x27;Shanghai&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> Age;</span><br></pre></td></tr></table></figure>
+
+<h2 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h2><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><p>假设我们要统计学生表的记录数量，除了直接使用<code>SELECT * FROM Students</code>得到结果集后，通过手动查询数量这种麻烦的方法外，我们可以使用<code>SQL</code>提供的聚合函数 <code>COUNT</code>，快速获得结果。以查询有多少学生为例，我们以下<code>SQL</code>语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> Students;</span><br></pre></td></tr></table></figure>
+
+<p>除了 <code>COUNT</code> 函数外，<code>SQL</code>还提供以下这些常用的聚合函数：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SUM</td>
+<td>计算某一列的总和，该列必须为数值类型</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>计算某一列的平均数，该列必须为数值类型</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>计算某一列的最大值</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>计算某一列的最小值</td>
+</tr>
+</tbody></table>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><p><code>SQL</code>还提供了“分组聚合”功能，帮助我们将具有共性字段的记录整合起来。比如我们想要根据城市<code>City</code>对学生进行分组，并需要查询每个城市有多少学生，可以使用<code>GROUP BY</code>语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> City, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> Students <span class="keyword">GROUP</span> <span class="keyword">BY</span> City;</span><br></pre></td></tr></table></figure>
+
+<p>执行此语句后，GROUP BY子句会按照City将学生进行分组，所有City相同的学生会被放到同一个组中，再进行分别计算，所以COUNT(*)的结果对应的就是特定城市的学生数量。其结果类似以下：</p>
+<table>
+<thead>
+<tr>
+<th>City</th>
+<th>COUNT(*)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Beijing</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Los Angeles</td>
+<td>2</td>
+</tr>
+<tr>
+<td>New York City</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Shanghai</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>如果我们将Name也放入查询结果，就不合适了，因为来自相同城市的学生可能有很多位，名字就各不相同了，所以以下语句是不合法的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> City, <span class="built_in">COUNT</span>(<span class="operator">*</span>), Name <span class="keyword">FROM</span> Students <span class="keyword">GROUP</span> <span class="keyword">BY</span> City;</span><br></pre></td></tr></table></figure>
+
+<p>GROUP BY 也能放入多个字段，比如我们想先将学生根据City分组，然后再根据性别分组，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> City, Gender, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> Students <span class="keyword">GROUP</span> <span class="keyword">BY</span> City, Gender;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><p><code>SELECT</code> 查询除了能从单表中查数据外，也能从多表中查询数据。语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> table1, table2;</span><br></pre></td></tr></table></figure>
+
+<p>比如要查询<code>Students</code>表和<code>Courses</code>表的“乘积”，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Students, Courses;</span><br></pre></td></tr></table></figure>
+
+<p>假设<code>Students</code>有5列字段和7行记录，<code>Courses</code>有2列字段和3行记录，其结果就是一个拥有21 (3 * 7) 行记录和 7 (5 + 2) 列字段的二维表，既Students表的每一行和Courses表的每一行两两拼在一起。结果集的列数会是两表列数之和，而行数是两表行数之积。</p>
+<p>有时候两张表可能拥有相同名字的字段，那么结果则会让人疑惑，我们可以通过使用 AS 取别名来区别字段。比如使用以下语句给<code>StudentID</code>和<code>CourseID</code>改名为<code>StudentId</code>和<code>CourseId</code>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Students.StudentID <span class="keyword">AS</span> StudentId, Courses.CourseID <span class="keyword">AS</span> CourseId <span class="keyword">FROM</span> Students, Courses;</span><br></pre></td></tr></table></figure>
+
+<p>给字段取别名的语法类似 <code>column_name AS new_column_name</code>，上面的语句分别给<code>StudentID</code>和<code>CoursesID</code>取了别名<code>StudentId</code>和<code>CourseId</code>，虽然在这个例子中，我们只是将最后的字母D变为小写。但考虑一下另一种情况：假设<code>Students</code>和<code>Courses</code>的主键字段都叫ID，那么这个别名就很有帮助了，我们可以使用以下语句使查询结果更明了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Students.ID <span class="keyword">AS</span> StudentId, Courses.ID <span class="keyword">AS</span> CourseId <span class="keyword">FROM</span> Students, Courses;</span><br></pre></td></tr></table></figure>
+
+<p>除了给输出字段取别名外，给表格取别名也很有用的，语法类似<code>table_name AS alias</code>，我们可以将上面的语句写成下面这样：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> S.ID <span class="keyword">AS</span> StudentId, C.ID <span class="keyword">AS</span> CourseId <span class="keyword">FROM</span> Students <span class="keyword">AS</span> S, Courses <span class="keyword">AS</span> C;</span><br></pre></td></tr></table></figure>
+
+<p>在多表查询中，我们同样还是能使用<code>WHERE</code>子句。为了帮助大家理解之后的内容，我们需要给<code>Students</code>添加一列新的字段<code>CourseID</code>，代表此学生选择的课程：</p>
+<table>
+<thead>
+<tr>
+<th>StudentID</th>
+<th>Name</th>
+<th>Gender</th>
+<th>Age</th>
+<th>City</th>
+<th>CourseID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>David</td>
+<td>M</td>
+<td>21</td>
+<td>Shanghai</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p>如果我们如果想要抓取<code>StudentID</code>和其对应的课程名字，可以使用以下语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> S.StudentID, C.CourseName <span class="keyword">FROM</span> Students <span class="keyword">AS</span> S, Courses <span class="keyword">AS</span> C <span class="keyword">WHERE</span> S.CourseID <span class="operator">=</span> C.CourseID;</span><br></pre></td></tr></table></figure>
+
+<p>除了<code>WHERE</code>子句，其他子句类似<code>ORDER BY</code>，<code>GROUP BY</code>也都适用于多表查询。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/07/14/SQL%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">SQL注入分类</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/07/11/php%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">php基础知识</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Jacen</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
