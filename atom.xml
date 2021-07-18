@@ -6,7 +6,7 @@
   <link href="http://jacen-cpu.github.io/atom.xml" rel="self"/>
   
   <link href="http://jacen-cpu.github.io/"/>
-  <updated>2021-07-16T02:47:38.909Z</updated>
+  <updated>2021-07-18T01:39:16.383Z</updated>
   <id>http://jacen-cpu.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>sql报错注入</title>
+    <title>SQL报错注入</title>
     <link href="http://jacen-cpu.github.io/2021/07/15/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/"/>
     <id>http://jacen-cpu.github.io/2021/07/15/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/</id>
     <published>2021-07-15T09:50:13.000Z</published>
-    <updated>2021-07-16T02:47:38.909Z</updated>
+    <updated>2021-07-18T01:39:16.383Z</updated>
     
     <content type="html"><![CDATA[<h1 id="xpath报错注入"><a href="#xpath报错注入" class="headerlink" title="xpath报错注入"></a>xpath报错注入</h1><h2 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml()"></a>updatexml()</h2><ul><li>updatexml（）是一个使用不同的xml标记匹配和替换xml块的函数。</li><li>作用：改变文档中符合条件的节点的值</li><li>语法： updatexml（XML_document，XPath_string，new_value） 第一个参数：是string格式，为XML文档对象的名称，文中为Doc 第二个参数：代表路径，Xpath格式的字符串例如//title【@lang】 第三个参数：string格式，替换查找到的符合条件的数据</li><li>updatexml使用时，当xpath_string格式出现错误，mysql则会爆出xpath语法错误（xpath syntax）</li><li>例如： select * from test where ide = 1 and (updatexml(1,0x7e,3)); 由于0x7e是~，不属于xpath语法格式，因此报出xpath语法错误</li></ul><h2 id="extractvalue"><a href="#extractvalue" class="headerlink" title="extractvalue()"></a>extractvalue()</h2><ul><li>此函数从目标XML中返回包含所查询值的字符串 语法：extractvalue（XML_document，xpath_string） 第一个参数：string格式，为XML文档对象的名称 第二个参数：xpath_string（xpath格式的字符串） select * from test where id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</li><li>extractvalue使用时当xpath_string格式出现错误，mysql则会爆出xpath语法错误（xpath syntax）</li><li>select user,password from users where user_id=1 and (extractvalue(1,0x7e));</li><li>由于0x7e就是~不属于xpath语法格式，因此报出xpath语法错误。</li></ul><h2 id="报错实战-updatexml-（基于dvwa平台"><a href="#报错实战-updatexml-（基于dvwa平台" class="headerlink" title="报错实战 updatexml() （基于dvwa平台)"></a>报错实战 updatexml() （基于dvwa平台)</h2><h1 id="floor-函数报错注入"><a href="#floor-函数报错注入" class="headerlink" title="floor ()函数报错注入"></a>floor ()函数报错注入</h1><h2 id="floor"><a href="#floor" class="headerlink" title="floor()"></a>floor()</h2><p>floor函数的作用就是返回小于等于括号内该值的最大整数。</p><h2 id="round"><a href="#round" class="headerlink" title="round()"></a>round()</h2><p>rand()可以产生一个在0和1之间的随机数。可以看出，直接使用rand函数每次产生的数值不一样，但当我们提供了一个固定的随机数的种子0之后，每次产生的值都是相同的，这也可以称之为伪随机。</p><h2 id="floor-rand-0-2-函数"><a href="#floor-rand-0-2-函数" class="headerlink" title="floor(rand(0)*2)函数"></a>floor(rand(0)*2)函数</h2><p>floor函数的作用就是返回小于等于括号内该值的最大整数。rand()本身是返回0<del>1的随机数，但在后面*2就变成了返回0</del>2之间的随机数。配合上floor函数就可以产生确定的两个数，即0和1。并且结合固定的随机数种子0，它每次产生的随机数列都是相同的值。此处的myclass 表为含有四行数据的表。</p>]]></content>
     
@@ -112,47 +112,6 @@
   </entry>
   
   <entry>
-    <title>请求方式</title>
-    <link href="http://jacen-cpu.github.io/2021/05/16/%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/"/>
-    <id>http://jacen-cpu.github.io/2021/05/16/%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/</id>
-    <published>2021-05-16T10:50:58.000Z</published>
-    <updated>2021-05-23T11:24:49.324Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="WriteUp"><a href="#WriteUp" class="headerlink" title="WriteUp:"></a>WriteUp:</h2><p>根据题目提示使用CTF**B Method（CTFHUB Method）</p><img src="/2021/05/16/%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/0.png" class=""><p>得到flag。</p><h2 id="Curl用法"><a href="#Curl用法" class="headerlink" title="Curl用法:"></a>Curl用法:</h2><p>不带有任何参数时，curl 就是发出 GET 请求。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl https://www.example.com</span><br></pre></td></tr></table></figure><h3 id="A"><a href="#A" class="headerlink" title="-A"></a>-A</h3><p><code>-A</code>参数指定客户端的用户代理标头，即<code>User-Agent</code>。curl 的默认用户代理字符串是<code>curl/[version]</code>。</p><h3 id="b"><a href="#b" class="headerlink" title="-b"></a>-b</h3><p><code>-b</code> 用来给服务器发送cookie。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -b <span class="string">&#x27;foo=bar&#x27;</span> https://google.com</span><br></pre></td></tr></table></figure><h3 id="c"><a href="#c" class="headerlink" title="-c"></a>-c</h3><p><code>-c</code>参数将服务器设置的 Cookie 写入一个文件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -c cookies.txt https://www.google.com</span><br></pre></td></tr></table></figure><h3 id="d"><a href="#d" class="headerlink" title="-d"></a>-d</h3><p><code>-d</code>参数用于发送 POST 请求的数据体。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl -d<span class="string">&#x27;login=emma＆password=123&#x27;</span>-X POST https://google.com/login</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ curl -d <span class="string">&#x27;login=emma&#x27;</span> -d <span class="string">&#x27;password=123&#x27;</span> -X POST  https://google.com/login</span><br></pre></td></tr></table></figure><p>使用<code>-d</code>参数以后，HTTP 请求会自动加上标头<code>Content-Type : application/x-www-form-urlencoded</code>。并且会自动将请求转为 POST 方法，因此可以省略<code>-X POST</code>。</p><p><code>-d</code>参数可以读取本地文本文件的数据，向服务器发送。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -d <span class="string">&#x27;@data.txt&#x27;</span> https://google.com/login</span><br></pre></td></tr></table></figure><p>上面命令读取<code>data.txt</code>文件的内容，作为数据体向服务器发送。</p><h3 id="–-data-urlencode"><a href="#–-data-urlencode" class="headerlink" title="– data-urlencode"></a>– data-urlencode</h3><p><code>--data-urlencode</code>参数等同于<code>-d</code>，发送 POST 请求的数据体，区别在于会自动将发送的数据进行 URL 编码。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl --data-urlencode <span class="string">&#x27;comment=hello world&#x27;</span> https://google.com/login</span><br></pre></td></tr></table></figure><p>上面代码中，发送的数据<code>hello world</code>之间有一个空格，需要进行 URL 编码。</p><h3 id="e"><a href="#e" class="headerlink" title="-e"></a>-e</h3><p><code>-e</code>参数用来设置 HTTP 的标头<code>Referer</code>，表示请求的来源。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -e <span class="string">&#x27;https://google.com?q=example&#x27;</span> https://www.example.com</span><br></pre></td></tr></table></figure><p>上面命令将<code>Referer</code>标头设为<code>https://google.com?q=example</code>。</p><p><code>-H</code>参数可以通过直接添加标头<code>Referer</code>，达到同样效果。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">&#x27;Referer: https://google.com?q=example&#x27;</span> https://www.example.com</span><br></pre></td></tr></table></figure><h3 id="F"><a href="#F" class="headerlink" title="-F"></a>-F</h3><p><code>-F</code>参数用来向服务器上传二进制文件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -F <span class="string">&#x27;file=@photo.png&#x27;</span> https://google.com/profile</span><br></pre></td></tr></table></figure><p>上面命令会给 HTTP 请求加上标头<code>Content-Type: multipart/form-data</code>，然后将文件<code>photo.png</code>作为<code>file</code>字段上传。</p><p><code>-F</code>参数可以指定 MIME 类型。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -F <span class="string">&#x27;file=@photo.png;type=image/png&#x27;</span> https://google.com/profile</span><br></pre></td></tr></table></figure><p>上面命令指定 MIME 类型为<code>image/png</code>，否则 curl 会把 MIME 类型设为<code>application/octet-stream</code>。</p><p><code>-F</code>参数也可以指定文件名。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -F <span class="string">&#x27;file=@photo.png;filename=me.png&#x27;</span> https://google.com/profile</span><br></pre></td></tr></table></figure><p>上面命令中，原始文件名为<code>photo.png</code>，但是服务器接收到的文件名为<code>me.png</code></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;WriteUp&quot;&gt;&lt;a href=&quot;#WriteUp&quot; class=&quot;headerlink&quot; title=&quot;WriteUp:&quot;&gt;&lt;/a&gt;WriteUp:&lt;/h2&gt;&lt;p&gt;根据题目提示使用CTF**B Method（CTFHUB Method）&lt;/p&gt;
-&lt;img sr</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>正则表达式</title>
-    <link href="http://jacen-cpu.github.io/2021/05/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://jacen-cpu.github.io/2021/05/12/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
-    <published>2021-05-12T10:55:09.000Z</published>
-    <updated>2021-05-12T11:07:11.955Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h1&gt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Vim基础</title>
     <link href="http://jacen-cpu.github.io/2021/04/23/Vim%E5%9F%BA%E7%A1%80/"/>
     <id>http://jacen-cpu.github.io/2021/04/23/Vim%E5%9F%BA%E7%A1%80/</id>
@@ -169,41 +128,6 @@
       
     
     
-    
-    
-  </entry>
-  
-  <entry>
-    <title>环境变量</title>
-    <link href="http://jacen-cpu.github.io/2021/04/16/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
-    <id>http://jacen-cpu.github.io/2021/04/16/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</id>
-    <published>2021-04-16T10:55:50.000Z</published>
-    <updated>2021-04-16T10:55:50.518Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>父子shell</title>
-    <link href="http://jacen-cpu.github.io/2021/04/09/%E7%88%B6%E5%AD%90shell/"/>
-    <id>http://jacen-cpu.github.io/2021/04/09/%E7%88%B6%E5%AD%90shell/</id>
-    <published>2021-04-09T11:00:01.000Z</published>
-    <updated>2021-05-21T11:16:07.167Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="父子shell"><a href="#父子shell" class="headerlink" title="父子shell"></a>父子shell</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><img src="/2021/04/09/%E7%88%B6%E5%AD%90shell/2.png" class=""><p>当我们在bash中输入几次bash时并没有什么反应，查看ps。可以看到每一个bash进程的PPID都是上一个bash的PID。这可以看出他们的父子关系。</p><h2 id="分号的作用"><a href="#分号的作用" class="headerlink" title="分号的作用"></a>分号的作用</h2><img src="/2021/04/09/%E7%88%B6%E5%AD%90shell/3.png" class=""><p>分号的作用就是依次执行命令。</p><h2 id="sleep和jobs"><a href="#sleep和jobs" class="headerlink" title="sleep和jobs"></a>sleep和jobs</h2><h2 id="后台用法"><a href="#后台用法" class="headerlink" title="后台用法"></a>后台用法</h2><h2 id="coproc协程"><a href="#coproc协程" class="headerlink" title="coproc协程"></a>coproc协程</h2><h2 id="外部命令和内建命令"><a href="#外部命令和内建命令" class="headerlink" title="外部命令和内建命令"></a>外部命令和内建命令</h2><p>外部命令：需要另外创建进程。</p><img src="/2021/04/09/%E7%88%B6%E5%AD%90shell/0.png" class=""><p>内建命令： 不需要另外创建进程。</p><p>另外我们可以通过<code>tpye</code> 命令来显示指定命令的类型。</p><img src="/2021/04/09/%E7%88%B6%E5%AD%90shell/1.png" class=""><h2 id="alias别名"><a href="#alias别名" class="headerlink" title="alias别名"></a>alias别名</h2><p>该命令作用是定义或显示别名。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;父子shell&quot;&gt;&lt;a href=&quot;#父子shell&quot; class=&quot;headerlink&quot; title=&quot;父子shell&quot;&gt;&lt;/a&gt;父子shell&lt;/h1&gt;&lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概</summary>
-      
-    
-    
-    
-    <category term="Linux" scheme="http://jacen-cpu.github.io/categories/Linux/"/>
     
     
   </entry>
@@ -226,27 +150,6 @@
     
     
     <category term="web" scheme="http://jacen-cpu.github.io/categories/web/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>什么是DOM?</title>
-    <link href="http://jacen-cpu.github.io/2021/04/03/%E4%BB%80%E4%B9%88%E6%98%AFDOM/"/>
-    <id>http://jacen-cpu.github.io/2021/04/03/%E4%BB%80%E4%B9%88%E6%98%AFDOM/</id>
-    <published>2021-04-03T07:43:35.000Z</published>
-    <updated>2021-04-03T12:26:29.887Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM"></a>什么是DOM</h1><blockquote><p><strong>文档对象模型 (DOM) 是HTML和XML文档的编程接口</strong>。它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容。DOM 将文档解析为一个由节点和对象（包含属性和方法的对象）组成的结构集合。<em>简言之，它会将web页面和脚本或程序语言连接起来</em>。</p></blockquote><p>总之文档对象模型是对文档的另一种表现形式。一个文档可以在浏览器窗口或作为HTML源码显示出来，而DOM是文档存储和操作的方式。例如，W3C DOM 中指定下面代码中的<code>getElementsByTagName</code>方法必须要返回所有<code>&lt;P&gt;</code> 元素的列表：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">paragraphs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;P&quot;</span>);</span><br><span class="line"><span class="comment">// paragraphs[0] is the first &lt;p&gt; element</span></span><br><span class="line"><span class="comment">// paragraphs[1] is the second &lt;p&gt; element, etc.</span></span><br><span class="line">alert(paragraphs[<span class="number">0</span>].nodeName);</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;什么是DOM&quot;&gt;&lt;a href=&quot;#什么是DOM&quot; class=&quot;headerlink&quot; title=&quot;什么是DOM&quot;&gt;&lt;/a&gt;什么是DOM&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;文档对象模型 (DOM) 是HTML和XML文档的编程接口&lt;/st</summary>
-      
-    
-    
     
     
   </entry>
@@ -275,19 +178,6 @@
   </entry>
   
   <entry>
-    <title>排序</title>
-    <link href="http://jacen-cpu.github.io/2021/04/03/%E6%8E%92%E5%BA%8F/"/>
-    <id>http://jacen-cpu.github.io/2021/04/03/%E6%8E%92%E5%BA%8F/</id>
-    <published>2021-04-03T01:21:52.000Z</published>
-    <updated>2021-04-03T01:21:52.631Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>OOP多态</title>
     <link href="http://jacen-cpu.github.io/2021/04/03/OOP%E5%A4%9A%E6%80%81/"/>
     <id>http://jacen-cpu.github.io/2021/04/03/OOP%E5%A4%9A%E6%80%81/</id>
@@ -305,50 +195,6 @@
     
     
     <category term="JAVA" scheme="http://jacen-cpu.github.io/categories/JAVA/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>删除排序数组中的重复项</title>
-    <link href="http://jacen-cpu.github.io/2021/04/01/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"/>
-    <id>http://jacen-cpu.github.io/2021/04/01/%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</id>
-    <published>2021-04-01T09:09:49.000Z</published>
-    <updated>2021-04-01T09:46:37.571Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="leetcode是个什么东西"><a href="#leetcode是个什么东西" class="headerlink" title="leetcode是个什么东西"></a>leetcode是个什么东西</h1><p>给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。</p><p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p><p>作者：力扣 (LeetCode)<br>链接：<a class="link"   href="https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2gy9m/" >https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2gy9m/<i class="fas fa-external-link-alt"></i></a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = numsSize;</span><br><span class="line">    <span class="keyword">int</span> front = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] != nums[i + <span class="number">1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> pace = i - front;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; len; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                nums[j - pace] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">            len -= pace;</span><br><span class="line">            i -= pace;</span><br><span class="line">            front = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i + <span class="number">1</span> == len - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            len -= (i - front + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>花了我整整两个小时我生疏的解决了leetcode算法的第一题。我心态崩了。</p><p>先来看看我的算法吧。我们</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;leetcode是个什么东西&quot;&gt;&lt;a href=&quot;#leetcode是个什么东西&quot; class=&quot;headerlink&quot; title=&quot;leetcode是个什么东西&quot;&gt;&lt;/a&gt;leetcode是个什么东西&lt;/h1&gt;&lt;p&gt;给你一个有序数组 nums ，请你 原地 删</summary>
-      
-    
-    
-    
-    <category term="leetcode WriteUp" scheme="http://jacen-cpu.github.io/categories/leetcode-WriteUp/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>算法的时空复杂度</title>
-    <link href="http://jacen-cpu.github.io/2021/04/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
-    <id>http://jacen-cpu.github.io/2021/04/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E7%A9%BA%E5%A4%8D%E6%9D%82%E5%BA%A6/</id>
-    <published>2021-04-01T06:17:07.000Z</published>
-    <updated>2021-05-21T10:54:05.798Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><h2 id="大O表示法"><a href="#大O表示法" class="headerlink" title="大O表示法"></a>大O表示法</h2><p>它用于描述算法的性能和复杂程度。大O表示法将算法按照消耗的时间进行分类，依据输入增大所需的空间和内存。</p><table><thead><tr><th align="center">符号</th><th align="center">名称</th></tr></thead><tbody><tr><td align="center">O(1)</td><td align="center">常数的</td></tr><tr><td align="center">O(log(n))</td><td align="center">对数的</td></tr><tr><td align="center">O((log(n)c)</td><td align="center">对数多项式的</td></tr><tr><td align="center">O(n)</td><td align="center">线性的</td></tr><tr><td align="center">O(n^2)</td><td align="center">二次的</td></tr><tr><td align="center">O(n^c)</td><td align="center">多项式的</td></tr><tr><td align="center">O(c^n)</td><td align="center">指数的</td></tr></tbody></table><p>如何理解。首先是如何衡量一个算法的效率。考虑用资源，CPU(时间)的占用，内存的占用，硬盘的占用，硬盘的占用和网络的占用。当我们考虑大O表示法时一般考虑的是CPU(时间)的占用。</p><h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>下面是两个将一维数组a中的n个数逆序存放到原数组中的算法。</p><p>算法1：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n/<span class="number">2</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    t = a[i];</span><br><span class="line">    a[i] = a[n - i - <span class="number">1</span>];</span><br><span class="line">    a[a - i - <span class="number">1</span>] = t;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>算法2：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    b[i] = a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i = n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line">    a[n - i - <span class="number">1</span>] = b[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>比较这两个算法，我们发现算法1仅仅借助了一个变量t与问题规模n大小无关空间复杂度为O(1)，而算法2另外借助了一个大小为n的辅助数组b，所以空间复杂度为O(n)。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;时间复杂度&quot;&gt;&lt;a href=&quot;#时间复杂度&quot; class=&quot;headerlink&quot; title=&quot;时间复杂度&quot;&gt;&lt;/a&gt;时间复杂度&lt;/h1&gt;&lt;h2 id=&quot;大O表示法&quot;&gt;&lt;a href=&quot;#大O表示法&quot; class=&quot;headerlink&quot; title=&quot;大O表</summary>
-      
-    
-    
-    
-    <category term="数据结构" scheme="http://jacen-cpu.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
   </entry>
@@ -422,15 +268,75 @@
   </entry>
   
   <entry>
-    <title>HTML文本</title>
-    <link href="http://jacen-cpu.github.io/2021/03/11/HTML%E6%96%87%E6%9C%AC/"/>
-    <id>http://jacen-cpu.github.io/2021/03/11/HTML%E6%96%87%E6%9C%AC/</id>
-    <published>2021-03-11T08:34:00.000Z</published>
-    <updated>2021-03-11T08:34:00.856Z</updated>
+    <title>GNU基础shell命令（二）</title>
+    <link href="http://jacen-cpu.github.io/2021/02/19/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://jacen-cpu.github.io/2021/02/19/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2021-02-19T14:37:44.000Z</published>
+    <updated>2021-03-06T13:57:54.973Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a><strong>ln命令</strong></h2><p><strong>链接文件</strong></p><ol><li><p>符号链接（软链接）——快捷方式</p><p><code>ln -s (文件)（链接名）</code></p></li><li><p>硬链接(<em>只能在一个硬盘里</em>)</p><p><code>ln (文件)（链接名） </code></p></li></ol><h2 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h2><p>**mv命令-**用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。</p><p><strong>重命名</strong></p><p><code>mv (原名) (重命名)</code></p><p><strong>移动</strong></p><p>将目录<code>/usr/men</code>中的所有文件移到当前目录（用<code>.</code>表示）中：</p><p><code>mv /usr/men/* . </code></p><p>移动文件 :</p><p><code>mv file_1.txt /home/office/ </code></p><p>移动多个文件 </p><p><code>mv file_2.txt file_3.txt file_4.txt /home/office/</code></p><p><code>mv *.txt /home/office/ </code></p><p>移动目录</p><p><code>mv ../doc/ ~</code></p><h2 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h2><p><strong>rm-用于删除给定的文件和目录</strong> </p><p>-d：直接把欲删除的目录的硬连接数据删除成0，删除该目录；</p><p>-f：强制删除文件或目录；</p><p>-i：删除已有文件或目录之前先询问用户；</p><p>-r或-R：递归处理，将指定目录下的所有文件与子目录一并处理；</p><p>–preserve-root：不对根目录进行递归操作；</p><p>-v：显示指令的详细执行过程；</p><h2 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h2><p><strong>mkdir-用来创建目录</strong></p><p>在目录<code>/fuck/kk</code>下建立子目录test，并且只有文件主有读、写和执行权限，其他人无权访问 </p><p><code>mkdir -m 700 ./fuck/kk/test </code></p><p>在目录<code>/fuck/kk</code>下建立目录kid并建立它的父目录father</p><p><code>mkdir -p ./fuck/kk/father/kid</code></p><h2 id="cat-more-less命令-（查看文件）"><a href="#cat-more-less命令-（查看文件）" class="headerlink" title="cat,more,less命令 （查看文件）"></a>cat,more,less命令 （查看文件）</h2><p><strong>cat-查看文件</strong></p><p><code>cat (文件名)</code></p><p><code>cat -A</code></p><p><code>cat -n</code></p><p>适用于比较短的文件</p><p><strong>more-显示文件内容，每次只显示一屏</strong></p><ul><li>按 <code>Space</code> 键：显示文本的下一屏内容。</li><li>按 <code>Enter</code> 键：只显示文本的下一行内容。</li><li>按斜线符<code>|</code>：接着输入一个模式，可以在文本中寻找下一个相匹配的模式。</li><li>按H键：显示帮助屏，该屏上有相关的帮助信息。</li><li>按B键：显示上一屏内容。</li><li>按Q键：退出more命令</li></ul><p><strong>less-分屏上下翻页浏览文件内容</strong> </p><p>和more类似但是不常用</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;ln命令&quot;&gt;&lt;a href=&quot;#ln命令&quot; class=&quot;headerlink&quot; title=&quot;ln命令&quot;&gt;&lt;/a&gt;&lt;strong&gt;ln命令&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;链接文件&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;符号链接（软链</summary>
+      
     
     
     
+    <category term="Linux" scheme="http://jacen-cpu.github.io/categories/Linux/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>GNU基础shell命令（一）</title>
+    <link href="http://jacen-cpu.github.io/2021/02/16/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://jacen-cpu.github.io/2021/02/16/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2021-02-16T13:45:32.000Z</published>
+    <updated>2021-07-18T01:43:08.607Z</updated>
+    
+    <content type="html"><![CDATA[<p>在这里展示是Linux shell命令最基础的部分(<strong>Bash Shell</strong>)，却也是最重要的部分。<strong>（干货满满）</strong></p><h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p><strong>cd-切换用户当前工作目录</strong></p><figure class="highlight plaintext"><figcaption><span>[-L|[-P [-e]]] [dir]``` **空格非常重要**</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 选项：</span><br><span class="line">&gt;</span><br><span class="line">&gt; -L （默认值）如果要切换到的目标目录是一个符号连接，那么切换到符号连接的目录。</span><br><span class="line">&gt;</span><br><span class="line">&gt; -P 如果要切换到的目标目录是一个符号连接，那么切换到它指向的物理位置目录。 </span><br><span class="line">&gt;</span><br><span class="line">&gt; -当前工作目录将被切换到环境变量OLDPWD所表示的目录，也就是前一个工作目录。 </span><br><span class="line"></span><br><span class="line">cd    # 进入用户主目录； </span><br><span class="line"></span><br><span class="line">cd /  # 进入根目录 </span><br><span class="line"></span><br><span class="line">cd ~  # 进入用户主目录； </span><br><span class="line"></span><br><span class="line">cd ..  # 返回上级目录（若当前目录为“/“，则执行完后还在“/&quot;；&quot;..&quot;为上级目录的意思）； </span><br><span class="line"></span><br><span class="line">cd ../..  # 返回上两级目录； </span><br><span class="line"></span><br><span class="line">*cd !$  # 把上个命令的参数作为cd参数使用。* </span><br><span class="line"></span><br><span class="line">**pwd-输入当前的目录** </span><br><span class="line"></span><br><span class="line">**绝对路径和相对路径**</span><br><span class="line"></span><br><span class="line">我们知道所谓路径就是用来定位目标的位置的。所以我们生活中的地址就是个活生生的例子比如我是杭电的一个学生用绝对路径怎么表示呢？</span><br><span class="line"></span><br><span class="line">**/银河系/太阳系/地球/亚洲/中国/浙江/杭州/江干区/下沙/杭电**（是不是很蠢）蠢就对了在Linux绝对路径就是这样用的:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">cd /home/jacen/Downloads/</span><br></pre></td></tr></table></figure><img src="/2021/02/16/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/Snipaste_2021-02-16_22-17-24.png" class="" title="This is an example image"><p>同样用相对路径是什么说法呢？</p><p>假如我的一个同学在江苏，那么我会告诉他我的地址是 <strong>/浙江/杭州/江干区/下沙/杭电</strong> 很合理（不是吗）同样我们在Linux中这样用:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd Downloads/doc/</span><br></pre></td></tr></table></figure><img src="/2021/02/16/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/Snipaste_2021-02-16_22-27-18.png" class="" title="This is an example image"><h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p><strong>ls命令</strong> 用来显示目标列表，在Linux中是使用率较高的命令</p><p>ls       # 仅列出当前目录可见文件</p><p>ls -l    # 列出当前目录可见文件详细信息 </p><p>ls -a   #列出当前目录的所有文件包括隐藏文件 <em>（隐藏文件名前带点.）</em></p><p>ls -hl   # 列出详细信息并以可读大小显示文件大小 </p><p>ls -al   # 列出所有文件（包括隐藏）的详细信息 <em><strong>（缩写为ll）</strong></em></p><p>du -sh * | sort -h # 按文件大小排序(同上)</p><p>ls -F    #每个目录名加 “/“ 后缀，每个 FIFO 名加 “|” 后缀， 每个可运行名加“ * ”后缀。</p><p>ls -R    #递归列出遇到的子目录</p><p><em>ls -FR</em> </p><img src="/2021/02/16/GNU%E5%9F%BA%E7%A1%80shell%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%80%EF%BC%89/Snipaste_2021-02-19_22-26-25.png" class="" title="This is an example image"><h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><p><strong>文件扩展匹配符</strong> <code>?</code> <code>*</code></p><p><code>?</code>一个占位符</p><p><code>*</code>多个占位符</p><p><strong>元字符通配符 []</strong> </p><h2 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h2><p>*<em>touch的作用是</em>创建新文件<em>或是</em>更新时间* ** </p><p>-a：或–time=atime或–time=access或–time=use  只更改存取时间；</p><p>-c：或–no-create  不建立任何文件；</p><p>-d：&lt;时间日期&gt; 使用指定的日期时间，而非现在的时间；</p><p> -f：此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题；</p><p>-m：或–time=mtime或–time=modify  只更该变动时间；</p><p>-r：&lt;参考文件或目录&gt;  把指定文件或目录的日期时间，统统设成和参考文件或目录的日期时间相同；</p><p>-t：&lt;日期时间&gt;  使用指定的日期时间，而非现在的时间；</p><p>–help：在线帮助； –version：显示版本信息。 </p><h2 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h2><p><strong>cp-将源文件或目录复制到目标文件或目录中</strong> </p><p>-a：此参数的效果和同时指定”-dpR”参数相同； </p><p>-d：当复制符号连接时，把目标文件或目录也建立为符号连接，并指向与源文件或目录连接的原始文件或目录； </p><p>-f：强行复制文件或目录，不论目标文件或目录是否已存在； </p><p>-i：覆盖既有文件之前先询问用户； </p><p>-l：对源文件建立硬连接，而非复制文件； </p><p>-p：保留源文件或目录的属性； </p><p>-R/r：递归处理，将指定目录下的所有文件与子目录一并处理； </p><p>-s：对源文件建立符号连接，而非复制文件； </p><p>-u：使用这项参数后只会在源文件的更改时间较目标文件更新时或是名称相互对应的目标文件并不存在时，才复制文件； </p><p>-S：在备份文件时，用指定的后缀“SUFFIX”代替文件的默认后缀； </p><p>-b：覆盖已存在的文件目标前将目标文件备份； </p><p>-v：详细显示命令执行的操作。 </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在这里展示是Linux shell命令最基础的部分(&lt;strong&gt;Bash Shell&lt;/strong&gt;)，却也是最重要的部分。&lt;strong&gt;（干货满满）&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;cd命令&quot;&gt;&lt;a href=&quot;#cd命令&quot; class=&quot;headerl</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="http://jacen-cpu.github.io/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux到底是什么</title>
+    <link href="http://jacen-cpu.github.io/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    <id>http://jacen-cpu.github.io/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+    <published>2021-02-13T10:25:33.000Z</published>
+    <updated>2021-04-08T23:52:27.813Z</updated>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/> <h2 id="Linux起源"><a href="#Linux起源" class="headerlink" title="Linux起源"></a>Linux起源</h2><p>Linux全称<strong>GNU/Linux</strong> （这很重要），它是一种类UNIX的操作系统，其内核是由<strong>林纳斯·本纳第克特·托瓦兹</strong>（Linus Benedict Torvalds，1969年12月28日- ）写的。</p><p><img src="https://bkimg.cdn.bcebos.com/pic/5882b2b7d0a20cf4f664615276094b36adaf9943?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg"></p><p>20世纪80年代，当时可供计算机选用的操作系统主要有Unix。但是它并不是面向我们这些普通人的，Unix主要的用户仅仅是那些大厂，大公司。但这时林纳斯站出来了，他在大学里仅仅花了一年的时间就开发出了Linux的内核，并使之开源。Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统 。</p><h2 id="Linux的各种发行版"><a href="#Linux的各种发行版" class="headerlink" title="Linux的各种发行版"></a>Linux的各种发行版</h2><p>Linux有上百种不同的发行版 。列如（Ubuntu, CenntOS, RedHat, Kail…）。就好像安卓有华为，小米， oppo, vivo。</p><h3 id="主流发行版"><a href="#主流发行版" class="headerlink" title="主流发行版"></a>主流发行版</h3><ul><li>Debian(其派生版本有Ubuntu, Linux Mint, Kail)</li><li>Fedore(其派生版本有RedHat, CentOS, Xange, Yellow Dog Linux)</li><li>openSUSE(其派生版本有SUSE Linux Enterprise )</li></ul><h2 id="Linux的四大组成部分"><a href="#Linux的四大组成部分" class="headerlink" title="Linux的四大组成部分"></a>Linux的四大组成部分</h2><ol><li>Linux Kernel 内核</li><li>GNU工具 GNU<em>（GNU’s Not Unix! ）</em></li><li>GUI Desktop环境</li><li>Application 应用</li></ol><h2 id="GUI和GNU-Linux的系统组成"><a href="#GUI和GNU-Linux的系统组成" class="headerlink" title="GUI和GNU-Linux的系统组成"></a>GUI和GNU-Linux的系统组成</h2><p>有关Linux的系统组成，请参阅下面的思维导图。</p><img src="/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/Snipaste_2021-02-13_19-00-56.png" class="" title="This is an example image"><h2 id="Linux内核"><a href="#Linux内核" class="headerlink" title="Linux内核"></a>Linux内核</h2><ol><li>硬件设备 管理使用</li><li>软件程序 (系统) -&gt; 操作软件</li><li>系统内存</li><li>文件管理（保存文件， 删除文件， 修改文件）</li></ol><h4 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h4><p>简单的来讲文件系统就是文件读和写的标准。</p><blockquote><p>linux支持的文件系统类型：ext, ext2, ext3, <strong>ext4</strong>, hpfs, isp9660, JFS…</p></blockquote><blockquote><p>Windows支持的文件系统类型： FAT32, NTFS, exFAT</p></blockquote><p><em>不同类型的文件系统产生不同的效果</em> 。</p><h2 id="GNU"><a href="#GNU" class="headerlink" title="GNU"></a>GNU</h2><h4 id="GNU组织"><a href="#GNU组织" class="headerlink" title="GNU组织"></a>GNU组织</h4><p>Unix上具有的一些软件，Linux内核本身没有，所以GNU就模仿Unix，为Linux写了一些必要的软件。</p><h4 id="GNU核心"><a href="#GNU核心" class="headerlink" title="GNU核心"></a>GNU核心</h4><p><strong>coreutils</strong></p><p>它是供Linux使用的工具。它有三个组成。</p><ol><li>用来处理文件的工具</li><li>用来操作文本的工具</li><li>用来管理进程的工具</li></ol><p><strong>shell</strong></p><p>它是提供给用户使用的软件： 用户拿它来使用电脑，并且与电脑交互。</p><p>shell(命令行壳层)提供一个命令行界面(CLI); 而图形壳层提供一个图形用户界面(GUI)。</p><p>bash shell 基础shell</p><p>其他的shell: zsh, ash, korn,  tcsh</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;/&gt; 
+
+&lt;h2 id=&quot;Linux起源&quot;&gt;&lt;a href=&quot;#Linux起源&quot; class=&quot;headerlink&quot; title=&quot;Linux起源&quot;&gt;&lt;/a&gt;Linux起源&lt;/h2&gt;&lt;p&gt;Li</summary>
+      
+    
+    
+    
+    <category term="Linux" scheme="http://jacen-cpu.github.io/categories/Linux/"/>
+    
+    
+    <category term="操作系统" scheme="http://jacen-cpu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
