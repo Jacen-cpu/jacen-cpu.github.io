@@ -9,7 +9,7 @@
     
     <title>
         
-            OOP多态 |
+            SQL函数 |
         
         Keep )w(
     </title>
@@ -177,7 +177,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">OOP多态</span>
+            <span class="title-hover-animation">SQL函数</span>
         </div>
 
         
@@ -195,7 +195,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-04-03 07:02:00
+        <i class="fas fa-edit"></i>&nbsp;2021-07-18 17:13:26
     </span>
     
         <span class="article-categories article-meta-item">
@@ -203,12 +203,23 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/JAVA/">JAVA</a>&nbsp;
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
                     </li>
                 
             </ul>
         </span>
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/SQL/">SQL</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -223,10 +234,15 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="OOP多态"><a href="#OOP多态" class="headerlink" title="OOP多态"></a>OOP多态</h1><h2 id="“is-a”规则（置换规则）"><a href="#“is-a”规则（置换规则）" class="headerlink" title="“is-a”规则（置换规则）"></a>“is-a”规则（置换规则）</h2><p>我们举个例子吧。如果我们有一个类叫做动物。显然我们可以创建一个动物的对象。接着我们考虑动物是一个超类，它有一个子类叫做“狗”。逻辑上来讲狗是动物，但是动物不一定是狗。因此我们可以进行这样的操作：将狗的对象赋值给动物类的变量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Anmial dogs = <span class="keyword">new</span> Dogs();</span><br></pre></td></tr></table></figure>
+            <h1 id="substr-str-pos-len"><a href="#substr-str-pos-len" class="headerlink" title="substr(str, pos, len)"></a>substr(str, pos, len)</h1><p>该函数功能是从pos开始的位置，截取len个字符</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">substr(string, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"># 取string左边第<span class="number">1</span>位置起，<span class="number">3</span>字长的字符串。</span><br><span class="line"># 所以结果为：str</span><br><span class="line">substr(string, <span class="number">-1</span>,<span class="number">3</span>)</span><br><span class="line"># 取string右边第<span class="number">1</span>位置起，<span class="number">3</span>字长的字符串。显然右边第一位置起往右不够<span class="number">3</span>字     长。结果只能是： g</span><br><span class="line">substr(string, <span class="number">-3</span>,<span class="number">3</span>)</span><br><span class="line"># 取string右边第<span class="number">3</span>位置起，<span class="number">3</span>字长的字符串。</span><br><span class="line"># 结果为: ing</span><br></pre></td></tr></table></figure>
 
-<p>因此在JAVA程序设计中对象变量是多态的。</p>
+<p>另外<code>substr(str, pos)</code>表示从pos位置开始截取到最后。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">substr(string, <span class="number">4</span>)</span><br><span class="line"># 从右第<span class="number">4</span>位置截取到最后</span><br><span class="line"># 结果是： ing</span><br></pre></td></tr></table></figure>
+
+<h1 id="ascii"><a href="#ascii" class="headerlink" title="ascii()"></a>ascii()</h1><p>函数接受字符表达式并返回字符表达式最左侧字符的ASCII代码值。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> assii(&quot;fx&quot;)</span><br><span class="line"># 结果是： <span class="number">102</span></span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -238,13 +254,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/04/03/XSS%E7%AE%80%E4%BB%8B/"
+                           href="/2021/07/18/SQLMap%E5%85%A5%E7%8B%B1%E6%8C%87%E5%8D%97/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">XSS简介</span>
+                                <span class="post-nav-title-item">SQLMap入狱指南</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -254,10 +270,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/03/31/OOP%E7%BB%A7%E6%89%BF/"
+                           href="/2021/07/15/sql%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">OOP继承</span>
+                                <span class="post-nav-title-item">SQL报错注入</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -366,7 +382,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OOP%E5%A4%9A%E6%80%81"><span class="nav-number">1.</span> <span class="nav-text">OOP多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9Cis-a%E2%80%9D%E8%A7%84%E5%88%99%EF%BC%88%E7%BD%AE%E6%8D%A2%E8%A7%84%E5%88%99%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">“is-a”规则（置换规则）</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#substr-str-pos-len"><span class="nav-number">1.</span> <span class="nav-text">substr(str, pos, len)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ascii"><span class="nav-number">2.</span> <span class="nav-text">ascii()</span></a></li></ol>
     </div>
 </div>
         </aside>
