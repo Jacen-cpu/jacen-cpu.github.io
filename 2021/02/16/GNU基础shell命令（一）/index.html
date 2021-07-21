@@ -223,9 +223,23 @@
         
 
         <div class="article-content markdown-body">
-            <p>在这里展示是Linux shell命令最基础的部分(<strong>Bash Shell</strong>)，却也是最重要的部分。<strong>（干货满满）</strong></p>
+            <p>在这里展示是Linux shell命令最基础的部分(<strong>Bash Shell</strong>)，却也是最重要的部分。</p>
 <h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p><strong>cd-切换用户当前工作目录</strong></p>
-<figure class="highlight plaintext"><figcaption><span>[-L|[-P [-e]]] [dir]``` **空格非常重要**</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">选项：</span><br><span class="line"></span><br><span class="line">-L （默认值）如果要切换到的目标目录是一个符号连接，那么切换到符号连接的目录。</span><br><span class="line"></span><br><span class="line">-P 如果要切换到的目标目录是一个符号连接，那么切换到它指向的物理位置目录。 </span><br><span class="line"></span><br><span class="line">-当前工作目录将被切换到环境变量OLDPWD所表示的目录，也就是前一个工作目录。 </span><br><span class="line"></span><br><span class="line">cd    # 进入用户主目录； </span><br><span class="line"></span><br><span class="line">cd /  # 进入根目录 </span><br><span class="line"></span><br><span class="line">cd ~  # 进入用户主目录； </span><br><span class="line"></span><br><span class="line">cd ..  # 返回上级目录（若当前目录为“/“，则执行完后还在“/&quot;；&quot;..&quot;为上级目录的意思）； </span><br><span class="line"></span><br><span class="line">cd ../..  # 返回上两级目录； </span><br><span class="line"></span><br><span class="line">*cd !$  # 把上个命令的参数作为cd参数使用。* </span><br><span class="line"></span><br><span class="line">**pwd-输入当前的目录** </span><br><span class="line"></span><br><span class="line">**绝对路径和相对路径**</span><br><span class="line"></span><br><span class="line">我们知道所谓路径就是用来定位目标的位置的。所以我们生活中的地址就是个活生生的例子比如我是杭电的一个学生用绝对路径怎么表示呢？</span><br><span class="line"></span><br><span class="line">**/银河系/太阳系/地球/亚洲/中国/浙江/杭州/江干区/下沙/杭电**（是不是很蠢）蠢就对了在Linux绝对路径就是这样用的:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">cd /home/jacen/Downloads/</span><br></pre></td></tr></table></figure>
+<p>选项：</p>
+<p>-L （默认值）如果要切换到的目标目录是一个符号连接，那么切换到符号连接的目录。</p>
+<p>-P 如果要切换到的目标目录是一个符号连接，那么切换到它指向的物理位置目录。 </p>
+<p>-当前工作目录将被切换到环境变量OLDPWD所表示的目录，也就是前一个工作目录。 </p>
+<p>cd    # 进入用户主目录； </p>
+<p>cd /  # 进入根目录 </p>
+<p>cd ~  # 进入用户主目录； </p>
+<p>cd ..  # 返回上级目录（若当前目录为“/“，则执行完后还在“/“；”..”为上级目录的意思）； </p>
+<p>cd ../..  # 返回上两级目录； </p>
+<p><em>cd !$  # 把上个命令的参数作为cd参数使用。</em> </p>
+<p><strong>pwd-输入当前的目录</strong> </p>
+<p><strong>绝对路径和相对路径</strong></p>
+<p>我们知道所谓路径就是用来定位目标的位置的。所以我们生活中的地址就是个活生生的例子比如我是杭电的一个学生用绝对路径怎么表示呢？</p>
+<p><strong>/银河系/太阳系/地球/亚洲/中国/浙江/杭州/江干区/下沙/杭电</strong>（是不是很蠢）蠢就对了在Linux绝对路径就是这样用的:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/jacen/Downloads/</span><br></pre></td></tr></table></figure>
 
 
 
